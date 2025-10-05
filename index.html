@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Classroom & Timetable Scheduler</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">SmartScheduler</div>
+                <div class="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#features">Features</a>
+                    <a href="#scheduler">Scheduler</a>
+                    <a href="#parameters">Parameters</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Smart Classroom & Timetable Scheduler</h1>
+            <p>An intelligent web-based platform that optimizes class scheduling for higher education institutions, maximizing resource utilization and minimizing conflicts.</p>
+            <button class="btn btn-primary">Get Started</button>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Optimized Scheduling</h3>
+                    <p>Intelligent algorithm that considers faculty availability, classroom capacity, and student preferences to create conflict-free timetables.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Multi-Department Support</h3>
+                    <p>Schedule classes across multiple departments with shared resources and varying academic calendars.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Dynamic Adjustments</h3>
+                    <p>Real-time adjustments for faculty leaves, room unavailability, and last-minute changes with automatic reoptimization.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Resource Analytics</h3>
+                    <p>Detailed reports on classroom utilization, faculty workload distribution, and optimization metrics.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Secure Access</h3>
+                    <p>Role-based access control with secure login for administrators, faculty, and department heads.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Friendly</h3>
+                    <p>Responsive design that works seamlessly on desktops, tablets, and mobile devices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="scheduler" id="scheduler">
+        <div class="container">
+            <h2 class="section-title">Timetable Scheduler</h2>
+            <div class="scheduler-container">
+                <div class="tabs">
+                    <button class="tab active" data-tab="input">Input Data</button>
+                    <button class="tab" data-tab="generate">Generate Timetable</button>
+                    <button class="tab" data-tab="review">Review & Approve</button>
+                </div>
+                
+                <div class="tab-content" id="input-tab">
+                    <div class="scheduler-form">
+                        <div class="form-group">
+                            <label for="department">Department</label>
+                            <select class="form-control" id="department">
+                                <option value="">Select Department</option>
+                                <option value="computer-science">Computer Science</option>
+                                <option value="electronics">Electronics & Communication</option>
+                                <option value="mechanical">Mechanical Engineering</option>
+                                <option value="civil">Civil Engineering</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="semester">Semester</label>
+                            <select class="form-control" id="semester">
+                                <option value="">Select Semester</option>
+                                <option value="1">Semester 1</option>
+                                <option value="2">Semester 2</option>
+                                <option value="3">Semester 3</option>
+                                <option value="4">Semester 4</option>
+                                <option value="5">Semester 5</option>
+                                <option value="6">Semester 6</option>
+                                <option value="7">Semester 7</option>
+                                <option value="8">Semester 8</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subjects">Subjects (comma separated)</label>
+                            <input type="text" class="form-control" id="subjects" placeholder="Mathematics, BEE, Mechanics, C-Programming">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="faculty">Faculty Members (comma separated)</label>
+                            <input type="text" class="form-control" id="faculty" placeholder="Sasmita Kumari Pradhan, Dr. MD Siddique, Dr. Amit Kumar Sahoo">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="classrooms">Available Classrooms</label>
+                            <input type="number" class="form-control" id="classrooms" placeholder="Number of classrooms" value="5">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="batches">Number of Student Batches</label>
+                            <input type="number" class="form-control" id="batches" placeholder="Number of batches" value="3">
+                        </div>
+                        
+                        <button class="btn btn-primary" id="generate-btn">Generate Timetable</button>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="generate-tab" style="display: none;">
+                    <div class="timetable">
+                        <h3>Generated Timetable</h3>
+                        <table id="timetable-table">
+                            <thead>
+                                <tr>
+                                    <th>Time</th>
+                                    <th>Monday</th>
+                                    <th>Tuesday</th>
+                                    <th>Wednesday</th>
+                                    <th>Thursday</th>
+                                    <th>Friday</th>
+                                    <th>Saturday</th>
+                                </tr>
+                            </thead>
+                            <tbody id="timetable-body">
+                                <!-- Timetable will be generated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="review-tab" style="display: none;">
+                    <div class="review-section">
+                        <h3>Review & Approve Timetable</h3>
+                        <div class="review-content">
+                            <div class="conflict-alert" id="conflict-alert" style="display: none;">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span>Conflicts detected in the timetable. Please review and resolve.</span>
+                            </div>
+                            <div class="approval-status">
+                                <p>Status: <span id="approval-status">Pending Review</span></p>
+                            </div>
+                            <div class="review-actions">
+                                <button class="btn btn-primary" id="approve-btn">Approve Timetable</button>
+                                <button class="btn" id="reject-btn">Request Changes</button>
+                                <button class="btn" id="export-btn">Export as PDF</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="parameters" id="parameters">
+        <div class="container">
+            <h2 class="section-title">Scheduling Parameters</h2>
+            <div class="parameters-list">
+                <div class="parameter-item">
+                    <h4>Classroom Resources</h4>
+                    <p>Number of available classrooms and laboratories with their respective capacities and equipment.</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Faculty Availability</h4>
+                    <p>Teaching load limits, preferred time slots, and average monthly leave patterns for each instructor.</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Student Requirements</h4>
+                    <p>Batch sizes, elective course selections, and special accommodation needs.</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Curriculum Constraints</h4>
+                    <p>Subject prerequisites, credit hour requirements, and examination scheduling considerations.</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Time Constraints</h4>
+                    <p>Lunch breaks, assembly periods, and fixed-slot requirements for special classes.</p>
+                </div>
+                <div class="parameter-item">
+                    <h4>Optimization Goals</h4>
+                    <p>Prioritization of objectives such as workload balance, resource utilization, and student satisfaction.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Smart Classroom & Timetable Scheduler. All rights reserved.</p>
+            <p>Built with modern web technologies for educational institutions</p>
+            <p>By Prakash Maharana</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
